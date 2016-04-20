@@ -50,7 +50,11 @@ export function signInUser(creds) {
           return Promise.reject(user)
         }
         else {
-          AsyncStorage.setItem('access_token', user.access_token)
+          // Adds all login headers to AsyncStorage
+          AsyncStorage.setItem('access_token', response.headers.get('access-token '));
+          Asyncstorage.setItem('uid', response.headers.get('uid'));
+          Asyncstorage.setItem('client', response.headers.get('client'));
+          Asyncstorage.setItem('expiry', response.headers.get('expiry'));
 
           dispatch(receiveSignIn(user))
         }
@@ -108,6 +112,9 @@ export function signOutUser() {
           return Promise.reject(json)
         }
         AsyncStorage.removeItem('access_token')
+        AsyncStorage.removeItem('uid')
+        AsyncStorage.removeItem('client')
+        AsyncStorage.removeItem('expiry')
         dispatch(receiveSignOut())
       }).catch(err => console.log("Error: ", err))
   }
