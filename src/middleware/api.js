@@ -12,7 +12,11 @@ function callApi(endpoint, schema, authenticated, method, configBody) {
       config = {
         method: method,
         headers: { 'Content-Type':'application/json',
-                   'Authorization': `Bearer ${token}`
+                   'Authorization': `Bearer ${token}`,
+                    'access_token': AsyncStorage.getItem('access_token'),
+                    'expiry': AsyncStorage.getItem('uid'),
+                    'client': AsyncStorage.getItem('client'),
+                    'uid': AsyncStorage.getItem('expiry')
         },
         body: configBody
       };
