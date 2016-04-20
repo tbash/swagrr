@@ -1,36 +1,17 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
-import Navbar from '../components/Navbar'
+import React, { Component } from 'react-native';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import SwagrrApp from './SwagrrApp';
+import configureStore from '../store/configureStore';
 
-class App extends Component {
+const store = configureStore()
+
+export default class App extends Component {
   render() {
-    const { children, isAuthenticated, dispatch } = this.props
     return (
-      <div>
-        <Navbar
-          isAuthenticated={isAuthenticated}
-          dispatch={dispatch}
-        />
-        {children}
-      </div>
-    )
+      <Provider store={store}>
+        <SwagrrApp />
+      </Provider>
+    );
   }
 }
-
-App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
-  children: PropTypes.node
-}
-
-function mapStateToProps(state) {
-  const { signIn } = state
-  const { isAuthenticated } = signIn
-
-  return {
-    isAuthenticated
-  }
-}
-
-export default connect(mapStateToProps)(App)

@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/ActionTypes'
 import { API_ROOT } from '../constants/Config'
-import 'isomorphic-fetch'
+import { AsyncStorage } from 'react-native';
 
 function requestSignIn(creds) {
   return {
@@ -50,7 +50,7 @@ export function signInUser(creds) {
           return Promise.reject(user)
         }
         else {
-          localStorage.setItem('access_token', user.access_token)
+          AsyncStorage.setItem('access_token', user.access_token)
 
           dispatch(receiveSignIn(user))
         }
@@ -107,7 +107,7 @@ export function signOutUser() {
           dispatch(receiveSignOut())
           return Promise.reject(json)
         }
-        localStorage.removeItem('access_token')
+        AsyncStorage.removeItem('access_token')
         dispatch(receiveSignOut())
       }).catch(err => console.log("Error: ", err))
   }

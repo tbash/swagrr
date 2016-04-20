@@ -1,10 +1,10 @@
 import { arrayOf, normalize } from 'normalizr';
 import { API_ROOT } from '../constants/Config';
 import { camelizeKeys } from 'humps';
-import 'isomorphic-fetch';
+import { AsyncStorage } from 'react-native';
 
 function callApi(endpoint, schema, authenticated, method, configBody) {
-  let token = localStorage.getItem('access_token') || null;
+  let token = AsyncStorage.getItem('access_token') || null;
   let config = {};
 
   if(authenticated) {

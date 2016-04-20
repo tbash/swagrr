@@ -1,16 +1,30 @@
-import React, { Component, PropTypes } from 'react'
+import React, {
+  StyleSheet,
+  Component,
+  View,
+  Text,
+  TouchableOpacity
+} from 'react-native';
+
+const styles = StyleSheet.create({
+  button: {
+    width: 100,
+    height: 30,
+    padding: 10,
+    backgroundColor: 'lightgray',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 3
+  }
+});
 
 export default class SignIn extends Component {
-
   render() {
     return (
-      <div>
-        <input type='text' ref='email' className="form-control" style={{ marginRight: '5px' }} placeholder='email'/>
-        <input type='password' ref='password' className="form-control" style={{ marginRight: '5px' }} placeholder='password'/>
-        <button onClick={(event) => this.handleClick(event)} className="btn btn-primary">
-          Sign In
-        </button>
-      </div>
+      <View>
+        <TouchableOpacity onPress={this.handleClick} style={styles.button}>
+        </TouchableOpacity>
+      </View>
     )
   }
 
@@ -20,8 +34,4 @@ export default class SignIn extends Component {
     const creds = { email: email.value.trim(), password: password.value.trim() }
     this.props.onSignInClick(creds)
   }
-}
-
-SignIn.propTypes = {
-  onSignInClick: PropTypes.func.isRequired
 }

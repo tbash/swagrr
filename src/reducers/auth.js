@@ -1,8 +1,9 @@
-import * as actionTypes from '../constants/ActionTypes'
+import * as actionTypes from '../constants/ActionTypes';
+import { AsyncStorage } from 'react-native';
 
-export default function signIn(state = {
+export default function auth(state = {
     isFetching: false,
-    isAuthenticated: localStorage.getItem('access_token') ? true : false
+    isAuthenticated: AsyncStorage.getItem('access_token') ? true : false
   }, action) {
   switch (action.type) {
     case actionTypes.SIGN_IN_REQUEST:
