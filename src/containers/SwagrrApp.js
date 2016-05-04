@@ -1,22 +1,17 @@
 import React, { StyleSheet,View, Component, PropTypes, Text } from 'react-native'
 import { connect } from 'react-redux'
-import Navbar from '../components/Navbar'
+import MainApp from './MainAppContainer'
+
 
 class SwagrrApp extends Component {
   render() {
     const { isAuthenticated, dispatch } = this.props
-    return (
-      <View style={styles.container}>
-        <View style={styles.content}>
 
-        </View>
-        <Navbar
-          style={styles.navbar}
-          isAuthenticated={isAuthenticated}
-          dispatch={dispatch}
-        />
-      </View>
-    )
+    if(isAuthenticated) {
+      return <MainApp {...this.props} />
+    } else {
+      return <MainApp {...this.props} />
+    }
   }
 }
 
@@ -37,17 +32,19 @@ var styles = StyleSheet.create({
 })
 
 
-// SwagrrApp.propTypes = {
-//   dispatch: PropTypes.func.isRequired,
-//   isAuthenticated: PropTypes.bool.isRequired
-// }
+SwagrrApp.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+}
 
 function mapStateToProps(state) {
-  const { auth } = state
-  const { isAuthenticated } = auth
+  // const { auth } = state
+  // const { isAuthenticated } = auth
 
   return {
-    isAuthenticated
+    isAuthenticated: true,
+    selectedTab: state.tabs.selectedTab
+   // isAuthenticated: state.auth.isAuthenticated
   }
 }
 

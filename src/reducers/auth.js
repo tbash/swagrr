@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 
 export default function auth(state = {
     isFetching: false,
-    isAuthenticated: AsyncStorage.getItem('access_token') ? true : false
+    isAuthenticated: AsyncStorage.getItem('access_token') ? false : false
   }, action) {
   switch (action.type) {
     case actionTypes.SIGN_IN_REQUEST:
