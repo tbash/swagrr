@@ -8,11 +8,11 @@ import React, {
   PropTypes
 } from 'react-native';
 
-const MainApp = ({onTabSelect, selectedTab}) =>  {
+const TabApp = ({onTabSelect, selectedTab}) =>  {
 
   
 
-  MainApp.propTypes = {
+  TabApp.propTypes = {
     onTabSelect: PropTypes.func.isRequired,
     selectedTab: PropTypes.string.isRequired
   }
@@ -50,7 +50,7 @@ const MainApp = ({onTabSelect, selectedTab}) =>  {
   )
 }
 
-export default MainApp
+export default TabApp
 
 const styles = StyleSheet.create({
   button: {

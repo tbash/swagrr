@@ -1,4 +1,4 @@
-import MainApp from '../components/MainApp'
+import TabApp from '../components/TabApp'
 import { selectTab } from '../actions/tabs'
 import { connect } from 'react-redux'
 
@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-const MainAppContainer = connect(
+const TabAppContainer = connect(
 	mapStatesToProp,
 	mapDispatchToProps
-)(MainApp)
+)(TabApp)
 
-export default MainAppContainer
+export default TabAppContainer

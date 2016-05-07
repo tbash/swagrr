@@ -5,7 +5,7 @@ import React, {
   Text,
   TouchableOpacity
 } from 'react-native';
-import MainApp from '../containers/MainAppContainer'
+import TabApp from '../containers/TabApp'
 
 export default class SwagrrApp extends Component {
   render() {
@@ -13,9 +13,9 @@ export default class SwagrrApp extends Component {
     const { isAuthenticated } = this.props
 
     if(isAuthenticated) {
-      return <MainApp />
+      return <TabApp />
     } else {
-      return <MainApp />
+      return <TabApp />
     }
   }
 }
