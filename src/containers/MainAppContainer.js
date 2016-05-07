@@ -1,23 +1,23 @@
-
-import React, { View, Component, PropTypes, Text} from 'react-native'
 import MainApp from '../components/MainApp'
 import { selectTab } from '../actions/tabs'
+import { connect } from 'react-redux'
 
-export default class MainAppContainer extends Component {
-	
-	render() {
-    	const { dispatch, isAuthenticated, selectedTab } = this.props
-
-	    return (
-	      <MainApp
-	      	selectedTab={selectedTab}
-	      	onSelect={t => {
-	      		dispatch(selectTab(t))
-	      	}}/>
-	    )
+const mapStatesToProp = (state) => {
+	return {
+		selectedTab: state.tabs.selectedTab
+	}
+}
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onTabSelect: (t) => {
+			dispatch(selectTab(t))
+		}
 	}
 }
 
-MainAppContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired
-}
+const MainAppContainer = connect(
+	mapStatesToProp,
+	mapDispatchToProps
+)(MainApp)
+
+export default MainAppContainer

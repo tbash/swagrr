@@ -8,12 +8,12 @@ import React, {
   PropTypes
 } from 'react-native';
 
-const MainApp = ({dispatch, isAuthenticated, onSelect, selectedTab}) =>  {
+const MainApp = ({onTabSelect, selectedTab}) =>  {
 
   
 
   MainApp.propTypes = {
-    onSelect: PropTypes.func.isRequired,
+    onTabSelect: PropTypes.func.isRequired,
     selectedTab: PropTypes.string.isRequired
   }
 
@@ -34,7 +34,7 @@ const MainApp = ({dispatch, isAuthenticated, onSelect, selectedTab}) =>  {
           title="Home"
           selected={selectedTab === 'home'}
           onPress={() => {
-            onSelect('home');
+            onTabSelect('home');
         }}>
         {_renderContent('#414A8C', '🏚')}
         </TabBarIOS.Item>
@@ -42,7 +42,7 @@ const MainApp = ({dispatch, isAuthenticated, onSelect, selectedTab}) =>  {
           title="Search"
           selected={selectedTab === 'search'}
           onPress={() => {
-            onSelect('search');
+            onTabSelect('search');
         }}>
         {_renderContent('#414A8C', '🔍')}
         </TabBarIOS.Item>
